@@ -3,6 +3,21 @@
 
   var WHATSAPP_NUMBER = '77011113309';
 
+  document.querySelectorAll('[data-gallery]').forEach(function (g) {
+    var main = g.querySelector('.gallery-main');
+    var thumbs = g.querySelectorAll('.gallery-thumb');
+    if (!main || !thumbs.length) return;
+    thumbs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        var src = t.getAttribute('data-src');
+        if (!src) return;
+        main.src = src;
+        thumbs.forEach(function (x) { x.classList.remove('is-active'); });
+        t.classList.add('is-active');
+      });
+    });
+  });
+
   var form = document.getElementById('lead-form');
   if (!form) return;
 
