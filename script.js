@@ -1,8 +1,6 @@
 (function () {
   'use strict';
 
-  var WHATSAPP_NUMBER = '77011113309';
-
   document.querySelectorAll('[data-gallery]').forEach(function (g) {
     var main = g.querySelector('.gallery-main');
     var thumbs = g.querySelectorAll('.gallery-thumb');
@@ -18,66 +16,45 @@
     });
   });
 
-  var form = document.getElementById('lead-form');
-  if (!form) return;
+  document.querySelectorAll('[data-hero-slider]').forEach(function (slider) {
+    var slides = slider.querySelectorAll('.hero-slide');
+    var prevBtn = slider.querySelector('.hero-prev');
+    var nextBtn = slider.querySelector('.hero-next');
+    var dotsContainer = slider.querySelector('.hero-dots');
+    if (slides.length < 2) return;
 
-  var msgEl = document.getElementById('form-msg');
+    var current = 0;
+    var timer = null;
+    var INTERVAL = 4500;
 
-  function showMsg(type, text) {
-    msgEl.className = 'form-msg ' + type;
-    msgEl.textContent = text;
-  }
+    slides.forEach(function (_, i) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Фото ' + (i + 1));
+      if (i === 0) dot.classList.add('is-active');
+      dot.addEventListener('click', function () { go(i); restart(); });
+      dotsContainer.appendChild(dot);
+    });
+    var dots = dotsContainer.querySelectorAll('button');
 
-  function clearMsg() {
-    msgEl.className = 'form-msg';
-    msgEl.textContent = '';
-  }
-
-  function normalizePhone(value) {
-    return (value || '').replace(/[^\d+]/g, '');
-  }
-
-  function validate(name, phone) {
-    if (!name || name.trim().length < 2) {
-      return 'Укажи, пожалуйста, имя.';
+    function go(i) {
+      slides[current].classList.remove('is-active');
+      dots[current].classList.remove('is-active');
+      current = (i + slides.length) % slides.length;
+      slides[current].classList.add('is-active');
+      dots[current].classList.add('is-active');
     }
-    var clean = normalizePhone(phone);
-    if (clean.replace(/\D/g, '').length < 10) {
-      return 'Проверь номер телефона.';
-    }
-    return null;
-  }
+    function next() { go(current + 1); }
+    function prev() { go(current - 1); }
+    function start() { stop(); timer = setInterval(next, INTERVAL); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function restart() { start(); }
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    clearMsg();
+    if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restart(); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { next(); restart(); });
+    slider.addEventListener('mouseenter', stop);
+    slider.addEventListener('mouseleave', start);
 
-    var name = form.elements.name.value.trim();
-    var phone = form.elements.phone.value.trim();
-    var message = (form.elements.message.value || '').trim();
-
-    var err = validate(name, phone);
-    if (err) {
-      showMsg('error', err);
-      return;
-    }
-
-    var lines = [
-      'Заявка с сайта arana.estate',
-      'Имя: ' + name,
-      'Телефон: ' + phone
-    ];
-    if (message) lines.push('Сообщение: ' + message);
-
-    var text = encodeURIComponent(lines.join('\n'));
-    var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + text;
-
-    showMsg('success', 'Открываем WhatsApp…');
-    window.open(url, '_blank', 'noopener');
-
-    setTimeout(function () {
-      form.reset();
-      clearMsg();
-    }, 2500);
+    start();
   });
 })();
