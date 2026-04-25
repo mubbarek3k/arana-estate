@@ -16,6 +16,18 @@
     });
   });
 
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (typeof fbq !== 'function') return;
+    if (href.indexOf('wa.me') !== -1 || href.indexOf('api.whatsapp.com') !== -1) {
+      fbq('track', 'Lead', { method: 'whatsapp' });
+    } else if (href.indexOf('tel:') === 0) {
+      fbq('track', 'Lead', { method: 'phone' });
+    }
+  });
+
   document.querySelectorAll('[data-hero-slider]').forEach(function (slider) {
     var slides = slider.querySelectorAll('.hero-slide');
     var prevBtn = slider.querySelector('.hero-prev');

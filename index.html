@@ -14,6 +14,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="styles.css">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '735717325676570');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=735717325676570&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -33,6 +50,7 @@
     <div class="hero-text">
       <div class="hero-tag">Алматы · готовые объекты</div>
       <h1>Доступные квартиры в продаже</h1>
+      <p>Без комиссий и риелторов — квартиры напрямую от владельца.</p>
       <div class="hero-cta">
         <a href="#listings" class="btn btn-primary">Смотреть квартиры <span class="arrow">→</span></a>
         <a href="https://wa.me/77011113309" class="btn btn-ghost" target="_blank" rel="noopener">Написать в WhatsApp</a>
@@ -97,7 +115,6 @@
   <div class="container">
     <div class="section-num">02 / Квартиры в продаже</div>
     <h2 class="section-title">Готовые объекты</h2>
-    <p class="section-lead">Каждая квартира прошла полный цикл флипа: подбор, ремонт, меблировка. Все в Алматы.</p>
 
     <div class="listings">
 
@@ -118,7 +135,7 @@
           <div class="listing-num">Объект 01 · 10 фото</div>
           <h3 class="listing-title">2-комнатная в ЖК «Арена Сити Лайф»</h3>
           <p class="listing-address">Ботакоз 2/1 (Рыскулова), Алматы</p>
-          <div class="listing-price">47 700 000 ₸</div>
+          <div class="listing-price">45 000 000 ₸</div>
           <dl class="listing-meta">
             <dt>Площадь</dt><dd>46 м²</dd>
             <dt>Этаж</dt><dd>5 / 9</dd>
@@ -150,7 +167,7 @@
           <div class="listing-num">Объект 02 · 9 фото</div>
           <h3 class="listing-title">2-комнатная на Радостовца</h3>
           <p class="listing-address">Радостовца 8, Алматы</p>
-          <div class="listing-price">49 000 000 ₸</div>
+          <div class="listing-price">47 700 000 ₸</div>
           <dl class="listing-meta">
             <dt>Площадь</dt><dd>55 м²</dd>
             <dt>Этаж</dt><dd>5 / 5</dd>
@@ -168,9 +185,9 @@
       <article class="listing">
         <div class="listing-media">
           <div class="gallery" data-gallery>
-            <img class="gallery-main" src="images/apt3-2.jpg" alt="Радостовца 152/1 — кухня" loading="lazy">
+            <img class="gallery-main" src="images/apt3-5.jpg" alt="Радостовца 152/1 — комната" loading="lazy">
             <div class="gallery-thumbs">
-              <button class="gallery-thumb is-active" type="button" data-src="images/apt3-2.jpg" aria-label="Фото 1"><img src="images/apt3-2.jpg" alt="" loading="lazy"></button>
+              <button class="gallery-thumb is-active" type="button" data-src="images/apt3-5.jpg" aria-label="Фото 1"><img src="images/apt3-5.jpg" alt="" loading="lazy"></button>
               <button class="gallery-thumb" type="button" data-src="images/apt3-1.jpg" aria-label="Фото 2"><img src="images/apt3-1.jpg" alt="" loading="lazy"></button>
               <button class="gallery-thumb" type="button" data-src="images/apt3-3.jpg" aria-label="Фото 3"><img src="images/apt3-3.jpg" alt="" loading="lazy"></button>
               <button class="gallery-thumb" type="button" data-src="images/apt3-4.jpg" aria-label="Фото 4"><img src="images/apt3-4.jpg" alt="" loading="lazy"></button>
@@ -182,7 +199,7 @@
           <div class="listing-num">Объект 03 · 6 фото</div>
           <h3 class="listing-title">1-комнатная, кирпичный дом</h3>
           <p class="listing-address">Радостовца 152/1 (уг. Жандосова), Алматы</p>
-          <div class="listing-price">30 000 000 ₸</div>
+          <div class="listing-price">29 900 000 ₸</div>
           <dl class="listing-meta">
             <dt>Площадь</dt><dd>37 м²</dd>
             <dt>Тип</dt><dd>Кирпич (СовМин), 1973</dd>
@@ -230,7 +247,6 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand">arana.estate</div>
-        <p class="footer-tagline">Готовые квартиры в Алматы после флипа. Подбираем, ремонтируем, продаём — под ключ.</p>
       </div>
       <div class="footer-col">
         <h4>Сайт</h4>
